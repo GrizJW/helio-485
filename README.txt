@@ -3,10 +3,9 @@ Helio-485 Rev A — KiCad layout
 Open helio-485.kicad_pcb. KiCad 9 (file version 20241229).
 
 Board: 140 x 178 mm, 2 layer, 1.6 mm, 2 oz. No cell holders.
-J5 is the 2S pouch (PACK−, PACK+). J6 is the balance lead
-(PACK−, midpoint, PACK+). Two bare 3.7 V 10000 mAh pouches,
-for example 1260110, 12 x 60 x 110 mm. Do not use cells that
-already have a protection board.
+J5 is the 2S pouch (PACK−, PACK+). J6 is the balance lead (PACK−, midpoint, PACK+). Charge current is
+set to 2 A, which is the TP5100 limit. U10 is an LM393 low-voltage
+disconnect: it forces the 12 V boost off below 6.4 V on the pack.
 
 What is already done
 - Official KiCad footprints for the holders, USB-C (HRO TYPE-C-31-M-12),
@@ -42,3 +41,8 @@ Check before you fab
   charge the cells. Full-speed only; the pair is not 90 Ω.
 - USB-C programs the ESP32. J2 is the GEM2 supply: pin 1 yellow, pin 2 purple.
   J3 is Modbus: A pink, B green. The meter wants external power for Modbus.
+- Panel on J1: 30 W, Vmp about 16 V, Voc at or below 17 V. A normal
+  12 V panel with Voc near 21 V will kill the TP5100. 2 A fills a
+  10 Ah pack in about 6 hours of sun, not 4. That is the chip limit.
+- U10 trips at 6.4 V on the pack and holds the 12 V rail off until
+  the pack is about 0.3 V higher. GPIO23 cannot override it.

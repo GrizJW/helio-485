@@ -1,6 +1,6 @@
 Helio-485 Rev A — KiCad layout
 
-Open helio-485.kicad_pcb. KiCad 9 (file version 20241229).
+Open helio-485.kicad_pcb. KiCad 10 (file version 20260206).
 
 Board: 140 x 218 mm, 2 layer, 1.6 mm, 2 oz. No cell holders.
 J5 is the 2S pouch (PACK−, PACK+). J6 is the balance lead (PACK−, midpoint, PACK+). Charge current is
@@ -41,7 +41,15 @@ Check before you fab
   3.3 V buck runs from the laptop when the pack is out. USB does not
   charge the cells. Full-speed only; the pair is not 90 Ω.
 - USB-C programs the ESP32. J2 is the GEM2 supply: pin 1 yellow, pin 2 purple.
-  J3 is Modbus: A pink, B green. The meter wants external power for Modbus.
+  J3 is RS-485 Modbus. Pin 1 is A (GEM2 pink), pin 2 is B (GEM2 green),
+  pin 3 is ground. U6 is a THVD1400. GPIO5 drives D, GPIO4 reads R,
+  GPIO6 is DE and /RE tied together. Ra and Rb are 10 ohm between the
+  chip and the bus. D2 is an SM712 in SOT-23. Pins 1 and 2 are the
+  same 12 V line clamps; this layout uses pin 1 as B and pin 2 as A so
+  the two traces do not cross. Pin 3 is ground, with a via into the
+  ground plane. SJ1 ships open, so the 120 ohm is not across the pair
+  unless this node is an end of the cable.
+  The meter wants external power for Modbus. That power is J2.
 - Panel on J1: 30 W, Vmp about 16 V, Voc at or below 17 V. A normal
   12 V panel with Voc near 21 V will kill the TP5100. 2 A fills a
   10 Ah pack in about 6 hours of sun, not 4. That is the chip limit.

@@ -2,10 +2,11 @@ Helio-485 Rev A — KiCad layout
 
 Open helio-485.kicad_pcb. KiCad 9 (file version 20241229).
 
-Board: 140 x 178 mm, 2 layer, 1.6 mm, 2 oz. No cell holders.
+Board: 140 x 218 mm, 2 layer, 1.6 mm, 2 oz. No cell holders.
 J5 is the 2S pouch (PACK−, PACK+). J6 is the balance lead (PACK−, midpoint, PACK+). Charge current is
 set to 2 A, which is the TP5100 limit. U10 is an LM393 low-voltage
 disconnect: it forces the 12 V boost off below 6.4 V on the pack.
+J7 is the Ethernet jack. U11 is a W5500. The C5 has no MAC.
 
 What is already done
 - Official KiCad footprints for the holders, USB-C (HRO TYPE-C-31-M-12),
@@ -46,3 +47,5 @@ Check before you fab
   10 Ah pack in about 6 hours of sun, not 4. That is the chip limit.
 - U10 trips at 6.4 V on the pack and holds the 12 V rail off until
   the pack is about 0.3 V higher. GPIO23 cannot override it.
+- Ethernet is SPI, not RMII. GPIO0 low enables Q5. Confirm the
+  HR911105A land against the jack you buy before Gerbers.

@@ -2,8 +2,10 @@ Helio-485 Rev A — KiCad layout
 
 Open helio-485.kicad_pcb. KiCad 9 (file version 20241229).
 
-Board: 140 x 286 mm, 2 layer, 1.6 mm, 2 oz. Six Keystone 1042 holders,
-wired 2S3P (three series pairs in parallel). 3500 mAh cells.
+Board: 140 x 178 mm, 2 layer, 1.6 mm, 2 oz. Two Keystone 1042 holders,
+2S, 3500 mAh cells. Three cells is the maximum that was allowed, and
+three still cannot make 48 h on a GEM2, so the pack stays 2S. The
+TP5100 and the S-8252 are 2-cell parts.
 
 What is already done
 - Official KiCad footprints for the holders, USB-C (HRO TYPE-C-31-M-12),
@@ -15,9 +17,8 @@ What is already done
 - TPS61088 RHL0020A land from TI drawing 4219071. Pin 1 is the bottom-left
   pad. The exposed pad is pin 21 (PGND).
 - Nets on every placed pad.
-- The three series midpoints are one 2 mm bus on the right of the holders.
-- PACK- is a front bus into the sense resistor. PACK+ is a back bus into F1.
-  Do not tie those two buses together. They alternate down the left side.
+- The series midpoint is a 2.5 mm track on the right of the two holders.
+- PACK- into the sense resistor and PACK+ into F1 are 2 mm tracks.
 - Back copper is a GND zone. Press B to fill it.
 - Antenna keepout is a rule area on both layers at the top-right. No copper.
 

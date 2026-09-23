@@ -2,8 +2,8 @@ Helio-485 Rev A — KiCad layout
 
 Open helio-485.kicad_pcb. KiCad 9 (file version 20241229).
 
-Board: 140 x 178 mm, 2 layer, 1.6 mm, 2 oz. Two Keystone 1042 holders
-are 88 mm long, so the 112 x 88 sketch could not hold them.
+Board: 140 x 286 mm, 2 layer, 1.6 mm, 2 oz. Six Keystone 1042 holders,
+wired 2S3P (three series pairs in parallel). 3500 mAh cells.
 
 What is already done
 - Official KiCad footprints for the holders, USB-C (HRO TYPE-C-31-M-12),
@@ -15,8 +15,9 @@ What is already done
 - TPS61088 RHL0020A land from TI drawing 4219071. Pin 1 is the bottom-left
   pad. The exposed pad is pin 21 (PGND).
 - Nets on every placed pad.
-- The series midpoint is a 4 mm track on the right of the two holders.
-- PACK- into the sense resistor and PACK+ into F1 are 2.5 mm tracks.
+- The three series midpoints are one 2 mm bus on the right of the holders.
+- PACK- is a front bus into the sense resistor. PACK+ is a back bus into F1.
+  Do not tie those two buses together. They alternate down the left side.
 - Back copper is a GND zone. Press B to fill it.
 - Antenna keepout is a rule area on both layers at the top-right. No copper.
 
@@ -37,4 +38,5 @@ Check before you fab
   D3 (B5819W, SOD-123 pin 1 = cathode) ORs VBUS onto VSYS so the
   3.3 V buck runs from the laptop when the pack is out. USB does not
   charge the cells. Full-speed only; the pair is not 90 Ω.
-- EN of the TPS61088 is GPIO23. It is not tied to the pack.
+- USB-C programs the ESP32. J2 is the GEM2 supply: pin 1 yellow, pin 2 purple.
+  J3 is Modbus: A pink, B green. The meter wants external power for Modbus.

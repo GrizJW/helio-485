@@ -31,5 +31,10 @@ Check before you fab
 - TP5100 pin numbers follow the datasheet grouping used on the rev A
   sheet (VIN on 1/4/5/16, LX on 2/3, BAT on 9). Confirm against the reel.
 - AO3401A is G/S/D = pins 1/2/3. AOD510 is G/D/S = 1/2/3, tab is drain.
-- USB-C faces +X after a 270 degree rotation. Nudge it to the edge you want.
+- USB-C (J4, HRO TYPE-C-31-M-12) is on the left edge, plug facing out.
+  D+ / D− go through 22 Ω (Rdp, Rdm) to module pins 14 and 13
+  (GPIO14 USB D+, GPIO13 USB D−). CC1 and CC2 are 5.1 kΩ to GND.
+  D3 (B5819W, SOD-123 pin 1 = cathode) ORs VBUS onto VSYS so the
+  3.3 V buck runs from the laptop when the pack is out. USB does not
+  charge the cells. Full-speed only; the pair is not 90 Ω.
 - EN of the TPS61088 is GPIO23. It is not tied to the pack.
